@@ -1,4 +1,5 @@
 import NotesAPI from "./NotesAPI.js";
+import NotesView from "./NotesView.js";
 
 // NotesAPI.saveNote({
 //   id: 123456,
@@ -6,6 +7,11 @@ import NotesAPI from "./NotesAPI.js";
 //   body: "更新したプログラミングマスター受講中",
 // });
 
-console.log(NotesAPI.getAllNotes());
+const app = document.getElementById("app");
+const view = new NotesView(app, {
+  onNoteSelect() {
+    console.log("ノートが選択されました");
+  },
+});
 
-// NotesAPI.deleteNote(123456);
+console.log(NotesAPI.getAllNotes());
