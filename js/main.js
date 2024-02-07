@@ -12,6 +12,13 @@ const view = new NotesView(app, {
   onNoteSelect() {
     console.log("ノートが選択されました");
   },
+  onNoteAdd() {
+    console.log("ノートが追加されました");
+  },
+  onNoteEdit(newTitle, newBody) {
+    console.log(newTitle);
+    console.log(newBody);
+  },
 });
 
 console.log(NotesAPI.getAllNotes());

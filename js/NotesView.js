@@ -23,5 +23,22 @@ export default class NotesView {
         <textarea class="notesBody" placeholder="ここに本文を追加"></textarea>
       </div>
     `;
+
+    const btnAddNote = this.root.querySelector(".notesAdd");
+    const inputTitle = this.root.querySelector(".notesTitle");
+    const inputBody = this.root.querySelector(".notesBody");
+
+    btnAddNote.addEventListener("click", () => {
+      this.onNoteAdd();
+    });
+
+    [inputTitle, inputBody].forEach((inputField) => {
+      inputField.addEventListener("blur", () => {
+        const updateTitle = inputTitle.value.trim();
+        const updateBody = inputBody.value.trim();
+
+        this.onNoteEdit(updateTitle, updateBody);
+      });
+    });
   }
 }
