@@ -1,6 +1,9 @@
 import NotesAPI from "./NotesAPI.js";
 
 // NotesAPI.saveNote({
-//   title: "はじめてのメモアプリです",
-//   body: "メモアプリ作成中",
+//   id: 123456,
+//   title: "更新した2回目のメモです",
+//   body: "更新したプログラミングマスター受講中",
 // });
+
+console.log(NotesAPI.getAllNotes());

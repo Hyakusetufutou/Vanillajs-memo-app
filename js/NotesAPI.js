@@ -1,14 +1,27 @@
 export default class NotesAPI {
   // 全てのメモを取得する
-  static getAllNotes() {}
+  static getAllNotes() {
+    const notes = JSON.parse(localStorage.getItem("notes" || "[]"));
+    return notes;
+  }
 
   // メモを保存するAPI
   static saveNote(noteToSave) {
-    const notes = [];
+    const notes = NotesAPI.getAllNotes();
+    const existingNote = notes.find((note) => note.id === noteToSave.id);
 
-    noteToSave.id = Math.floor(Math.random * 1000000);
-    noteToSave.updated = new Date().toISOString();
-    notes.push(noteToSave);
+    if (existingNote) {
+      existingNote.title = noteToSave.title;
+      existingNote.body = noteToSave.body;
+      existingNote.updated = new Date().toISOString();
+    } else {
+      // noteToSave.id = Math.floor(Math.random * 1000000);
+      // noteToSave.updated = new Date().toISOString();
+      // notes.push(noteToSave);
+      noteToSave.id = noteToSave.id;
+      noteToSave.updated = new Date().toISOString();
+      notes.push(noteToSave);
+    }
 
     localStorage.setItem("notes", JSON.stringify(notes));
   }
