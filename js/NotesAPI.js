@@ -1,7 +1,7 @@
 export default class NotesAPI {
   // 全てのメモを取得する
   static getAllNotes() {
-    const notes = JSON.parse(localStorage.getItem("notes" || "[]"));
+    const notes = JSON.parse(localStorage.getItem("notes") || "[]");
     return notes;
   }
 
