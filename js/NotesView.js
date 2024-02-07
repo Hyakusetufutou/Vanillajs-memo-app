@@ -41,4 +41,23 @@ export default class NotesView {
       });
     });
   }
+
+  _createListItemHTML(id, title, body, updated) {
+    const MAX_BODY_LENGTH = 60;
+
+    return `
+        <div class="notesList-item" data-note-id=${id}>
+            <div class="notesSmall-title">
+                ${title}
+            </div>
+            <div class="notesSmall-body">
+                ${body.substring(0, MAX_BODY_LENGTH)}
+                ${body.length > MAX_BODY_LENGTH ? "..." : ""}
+            </div>
+            <div class="notesSmall-updated">
+                ${updated}
+            </div>
+        </div>
+    `;
+  }
 }
