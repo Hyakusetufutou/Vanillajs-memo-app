@@ -40,7 +40,13 @@ export default class App {
         this._setActiveNote(selectedNote);
       },
       onNoteAdd: () => {
-        console.log("ノートが追加されました");
+        const newNote = {
+          title: "新しいノート",
+          body: "ここに本文を追加",
+        };
+
+        NotesAPI.saveNote(newNote);
+        this._refreshNotes();
       },
       onNoteEdit: (title, body) => {
         NotesAPI.saveNote({
