@@ -64,6 +64,8 @@ export default class NotesView {
   updateNoteList(notes) {
     const notesListContainer = this.root.querySelector(".notesList");
 
+    notesListContainer.innerHTML = "";
+
     for (const note of notes) {
       const html = this._createListItemHTML(
         note.id,
@@ -99,6 +101,10 @@ export default class NotesView {
     // プレビュー欄にメモの内容を表示する
     this.root.querySelector(".notesTitle").value = note.title;
     this.root.querySelector(".notesBody").value = note.body;
+
+    this.root.querySelectorAll(".notesList-item").forEach((noteListItem) => {
+      noteListItem.classList.remove("notesList-item--selected");
+    });
 
     this.root
       .querySelector(`.notesList-item[data-note-id="${note.id}"]`)
