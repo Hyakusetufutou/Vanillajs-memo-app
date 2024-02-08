@@ -35,7 +35,6 @@ export default class App {
   _handlers() {
     return {
       onNoteSelect: (noteId) => {
-        console.log(noteId + "のノートが選択されました");
         const selectedNote = this.notes.find((note) => note.id == noteId);
         this._setActiveNote(selectedNote);
       },
@@ -58,7 +57,8 @@ export default class App {
         this._refreshNotes();
       },
       onNoteDelete: (noteId) => {
-        console.log(noteId + "のノートが削除されました");
+        NotesAPI.deleteNote(noteId);
+        this._refreshNotes();
       },
     };
   }

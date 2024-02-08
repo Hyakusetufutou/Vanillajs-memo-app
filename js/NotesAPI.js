@@ -26,7 +26,7 @@ export default class NotesAPI {
   // メモを削除するAPI
   static deleteNote(id) {
     const notes = NotesAPI.getAllNotes();
-    const newNotes = notes.filter((note) => note.id !== id);
+    const newNotes = notes.filter((note) => note.id != id);
 
     localStorage.setItem("notes", JSON.stringify(newNotes));
   }
